@@ -30,7 +30,8 @@ jobs:
 
       - name: Stop and Remove Old Container
         run: |
-          if [ $(docker ps -q -f name=nodejs-app-container) ]; then
+          if [ $(docker ps -aq -f name=nodejs-app-container) ]; then
+            echo "Stopping and removing existing container..."
             docker rm -f nodejs-app-container
           fi
 
