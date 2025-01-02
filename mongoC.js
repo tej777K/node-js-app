@@ -1,14 +1,15 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
 const password = encodeURIComponent(process.env.MONGO_PASSWORD.trim());
-const connectionString = `mongodb+srv://tejtejass827:<db_password>@devclust.kel2i.mongodb.net/?retryWrites=true&w=majority&appName=DevClust`; // clustore url
+const connectionString = `mongodb+srv://integrationninjas:${password}@devcluster.kel2i.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(connectionString);
+
 let conn;
 try {
   conn = await client.connect();
-  console.log("connection successful")
-} catch(e) {
-  console.error(e);
+  console.log('MongoDB connection successful');
+} catch (e) {
+  console.error('MongoDB connection failed:', e);
 }
-let db = conn.db("integration_ninjas");
+const db = conn.db('integration_ninjas');
 export default db;
