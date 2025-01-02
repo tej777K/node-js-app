@@ -36,4 +36,4 @@ jobs:
           fi
 
       - name: Run Docker Container
-        run: docker run -d -p 4001:4001 --name nodejs-app-container -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' tej7k/node-js-app:latest
+        run: docker run -d -p 4001:4001 --name nodejs-app-container -e MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} tej7k/node-js-app:latest
